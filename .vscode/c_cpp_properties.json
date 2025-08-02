@@ -1,0 +1,22 @@
+{
+    "configurations": [
+        {
+            "name": "windows-gcc-x64",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "C:/Users/Siddhant/Downloads/SFML-2.5.1-windows-vc15-64-bit/SFML-2.5.1/include/SFML",
+                "C:/Program Files (x86)/Windows Kits/10/Include/**",
+                "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/**/include",
+                "C:/Users/Siddhant/Downloads/SFML-2.5.1-windows-vc15-64-bit/SFML-2.5.1/include"
+            ],
+            "compilerPath": "cl",
+            "cStandard": "${default}",
+            "cppStandard": "${default}",
+            "intelliSenseMode": "windows-msvc-x64",
+            "compilerArgs": [
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}
