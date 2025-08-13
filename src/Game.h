@@ -13,9 +13,17 @@ class Game
     sf::RenderWindow* window;
     sf::Event ev;
     sf::VideoMode videmode;
+    sf::RectangleShape object;
+    sf::FloatRect bound;
+    sf::Vector2u window_size;
+    sf::Vector2f pos;
+    sf::Vector2f velocity = {2.0f , 0.0f};
 
     void initVariable();
     void initWindow();
+    void initobject();
+
+
 
     public:
     //constructors/destrustors
@@ -24,7 +32,6 @@ class Game
     const bool isWindowOpen() const;
 
     //Methods
-    void SpriteRunner();
     void pollEvents();
     void update();
     void render();
