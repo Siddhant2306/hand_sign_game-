@@ -32,8 +32,3 @@ target_link_libraries(WaveSimulator
     sfml-system
 )
 
-# Link Windows libraries (optional, if you're using WLAN/Bluetooth APIs)
-target_link_libraries(WaveSimulator
-    Wlanapi
-    Bthprops
-)

@@ -4,7 +4,6 @@
 int main()
 {
     Game game;
-    game.SpriteRunner(); 
     //Game loop 
     while (game.isWindowOpen())
     {  

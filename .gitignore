@@ -52,3 +52,22 @@ Thumbs.db
 *.log
 *.dmp
 *.stackdump
+
+# Ignore build and output folders
+bin/
+build/
+libs/
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore include directory (if it's generated, not source)
+include/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+

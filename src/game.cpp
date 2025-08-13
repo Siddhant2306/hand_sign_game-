@@ -1,11 +1,14 @@
 #include"game.h"
 #include<vector>
 #include<fstream>
+//Intiations
 
 Game::Game()
 {
     this->initVariable();
     this->initWindow();
+    this->initobject();
+
 } 
 
 Game::~Game()
@@ -34,7 +37,30 @@ void Game::pollEvents()
 
 void Game::update()
 {
-    this-> pollEvents();
+
+    bound = object.getGlobalBounds();
+    window_size = window->getSize();
+    pos = object.getPosition();
+
+    this->pollEvents();
+
+    this->object.move(velocity);
+
+    bound = object.getGlobalBounds();
+
+
+    if (bound.left < 0 || bound.left + bound.width > window_size.x)
+    {
+        velocity.x = -velocity.x;
+        object.move(velocity.x, 0);
+    }
+
+    if (bound.top < 0 || bound.top + bound.height > window_size.y)
+    {
+        velocity.y = -velocity.y;
+        object.move(0, velocity.y);
+    }
+
 }
 
 void Game::render()
@@ -42,6 +68,12 @@ void Game::render()
     this->window->clear(sf::Color(sf::Color(150,0,100,123)));
 
     this->window->display();
+
+    this->window->draw(object);
+
+    this->window->display();
+
+
 }
 
 //Private function 
@@ -56,6 +88,17 @@ void Game::initWindow()
     this->videmode.width = 800;
     
     this-> window  = new sf::RenderWindow(sf::VideoMode(800,600), "Main window", sf::Style::Titlebar | sf::Style::Close);
+
+    this-> window -> setFramerateLimit(144);
+}
+
+void Game::initobject()
+{
+    this->object.setPosition(250,250);
+    this->object.setSize(sf::Vector2(50.f,50.f));
+    this->object.setFillColor(sf::Color::Green);
+
+
 }
 
 const bool Game::isWindowOpen() const
@@ -63,14 +106,3 @@ const bool Game::isWindowOpen() const
     return this->window->isOpen();
 }
 
-void Game::SpriteRunner()
-{
-    sf::Texture texture;
-    texture.loadFromFile("C:/Users/Siddhant/WaveSimulator/build/bin/debug/explosion.png");
-    sf::Sprite sprite;
-    sprite.setTexture(texture);
-
-    
-    this->window->draw(sprite);
-
-}
