@@ -7,8 +7,7 @@ Game::Game()
 {
     this->initVariable();
     this->initWindow();
-    this->initobject();
-
+    //this->initobject();
 } 
 
 Game::~Game()
@@ -37,12 +36,18 @@ void Game::pollEvents()
 
 void Game::update()
 {
+    this->pollEvents();
 
+    player.update();
+   
+    /*
     bound = object.getGlobalBounds();
     window_size = window->getSize();
     pos = object.getPosition();
 
     this->pollEvents();
+
+    player.update();
 
     this->object.move(velocity);
 
@@ -60,6 +65,7 @@ void Game::update()
         velocity.y = -velocity.y;
         object.move(0, velocity.y);
     }
+    */
 
 }
 
@@ -67,13 +73,10 @@ void Game::render()
 {
     this->window->clear(sf::Color(sf::Color(150,0,100,123)));
 
+    //this->window->draw(object);
+    this->player.render(this->window);
+
     this->window->display();
-
-    this->window->draw(object);
-
-    this->window->display();
-
-
 }
 
 //Private function 
@@ -92,16 +95,16 @@ void Game::initWindow()
     this-> window -> setFramerateLimit(144);
 }
 
+/*
 void Game::initobject()
 {
     this->object.setPosition(250,250);
     this->object.setSize(sf::Vector2(50.f,50.f));
     this->object.setFillColor(sf::Color::Green);
-
-
 }
+*/
 
-const bool Game::isWindowOpen() const
+const bool Game::Running() const
 {
     return this->window->isOpen();
 }
