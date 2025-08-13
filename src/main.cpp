@@ -5,7 +5,7 @@ int main()
 {
     Game game;
     //Game loop 
-    while (game.isWindowOpen())
+    while (game.Running())
     {  
        //Update loop 
         game.update();
