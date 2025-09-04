@@ -1,18 +1,23 @@
-#include"game.h"
 #include<vector>
 #include<fstream>
-//Intiations
 
+#include"Game.h"
+#include"utiliti.h"
+
+//Intiations
 Game::Game()
 {
     this->initVariable();
     this->initWindow();
+    Log("window start");
     //this->initobject();
 } 
 
 Game::~Game()
 {
+
     delete this->window;
+    Log("window is done");
 }
 
 //Method 
@@ -24,11 +29,13 @@ void Game::pollEvents()
         {
          case sf::Event::Closed:
             this->window->close();
+            Log("window closed"); 
             break;
          
          case sf::Event::KeyPressed:
             if(this->ev.key.code == sf::Keyboard::Escape)
                 this->window->close();
+                Log("window close by escape");
             break;
         }
     }
@@ -38,7 +45,11 @@ void Game::update()
 {
     this->pollEvents();
 
-    player.update();
+    Log("Game loop");
+
+    player.update(this->window);
+
+    Log("Player loop");
    
     /*
     bound = object.getGlobalBounds();
@@ -74,7 +85,8 @@ void Game::render()
     this->window->clear(sf::Color(sf::Color(150,0,100,123)));
 
     //this->window->draw(object);
-    this->player.render(this->window);
+    player.render(this->window);
+    Log("Player rendered");
 
     this->window->display();
 }
@@ -91,6 +103,8 @@ void Game::initWindow()
     this->videmode.width = 800;
     
     this-> window  = new sf::RenderWindow(sf::VideoMode(800,600), "Main window", sf::Style::Titlebar | sf::Style::Close);
+    Log("window is initiated");
+
 
     this-> window -> setFramerateLimit(144);
 }

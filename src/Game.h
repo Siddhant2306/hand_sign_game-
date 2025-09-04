@@ -4,6 +4,7 @@
 #include<ctime>
 
 #include"Player.h"
+#include"utiliti.h"
 
 class Game
 {
@@ -24,7 +25,7 @@ class Game
 
     void initVariable();
     void initWindow();
-    void initobject();
+    //void initobject();
 
     public:
     //constructors/destrustors
