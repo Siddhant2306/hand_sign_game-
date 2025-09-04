@@ -6,6 +6,8 @@
 #include<Network.hpp>
 #include<Window.hpp>
 
+#include"utiliti.h"
+
 class Player 
 {
     private:
@@ -25,6 +27,6 @@ class Player
     virtual ~Player();
 
     //Methods
-    void update();
+    void update(sf::RenderWindow* window);
     void render(sf::RenderTarget* target);
 };

@@ -1,9 +1,11 @@
 #include"Player.h"
 #include"Game.h"
+#include"utiliti.h"
 
 Player::Player()
 {
     this->initobject();
+    Log("object initiated");    
 }
 
 Player::~Player()
@@ -19,11 +21,12 @@ void Player::initobject()
 
 }
 
-void Player::update()
+void Player::update(sf::RenderWindow* window)
 {
     bound = object.getGlobalBounds();
     window_size = window->getSize();
     pos = object.getPosition();
+    Log("all the initials set");
 
     this->object.move(velocity);
 
@@ -34,12 +37,14 @@ void Player::update()
     {
         velocity.x = -velocity.x;
         object.move(velocity.x, 0);
+        Log("object collided with x");
     }
 
     if (bound.top < 0 || bound.top + bound.height > window_size.y)
     {
         velocity.y = -velocity.y;
         object.move(0, velocity.y);
+        Log("object collided with y");
     }
 
 }
