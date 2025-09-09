@@ -47,6 +47,17 @@ void Game::update()
 
     Log("Game loop");
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::E) && !player.isRecording())
+    {
+        player.startRecord();
+
+    }
+
+    if(sf::Keyboard::isKeyPressed(sf::Keyboard::R))
+    {
+        player.startReplay();
+    }
+
     player.update(this->window);
 
     Log("Player loop");
