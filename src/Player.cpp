@@ -1,3 +1,5 @@
+#include<vector>
+
 #include"Player.h"
 #include"Game.h"
 #include"utiliti.h"
@@ -5,6 +7,11 @@
 Player::Player()
 {
     this->initobject();
+
+    recordingindicator.setRadius(20.f);
+    recordingindicator.setFillColor(sf::Color::Red);
+    recordingindicator.setPosition(10,10);
+
     Log("object initiated");    
 }
 
@@ -22,7 +29,18 @@ void Player::initobject()
 }
 
 void Player::update(sf::RenderWindow* window)
-{
+{    
+    if (!isRecording() && replayIndex >= 0 && replayIndex < pos_object.size())
+    {
+        object.setPosition(pos_object[replayIndex]);
+        replayIndex--;
+    }
+      
+    if(recordIndex >= 0) 
+    {
+        pos_object.push_back(pos);
+    }
+            
     bound = object.getGlobalBounds();
     window_size = window->getSize();
     pos = object.getPosition();
@@ -49,7 +67,24 @@ void Player::update(sf::RenderWindow* window)
 
 }
 
+void Player::startRecord()
+{
+    recordIndex = 0; 
+    pos_object.clear();
+}
+
+void Player::startReplay()
+{
+    recordIndex = -1;
+    replayIndex = static_cast<int>(pos_object.size()) - 1;
+}
+
 void Player::render(sf::RenderTarget* target)
 {
     target->draw(object);
+
+    if(isRecording())
+    {
+        target->draw(recordingindicator);
+    }
 }
