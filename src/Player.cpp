@@ -7,6 +7,8 @@
 Player::Player()
 {
     this->initobject();
+    this->inittextures();
+    this->initsprite();    
 
     recordingindicator.setRadius(20.f);
     recordingindicator.setFillColor(sf::Color::Red);
@@ -25,7 +27,32 @@ void Player::initobject()
     this->object.setPosition(250,250);
     this->object.setSize(sf::Vector2f(50.f,50.f));
     this->object.setFillColor(sf::Color::Green);
+    //this->object.setTexture(&this->texture);  
 
+}
+
+void Player::inittextures()
+{
+    Log("Texture initiated");
+    if(!texture.loadFromFile("resources/image.jpg"))
+    {
+        Error("Textures not found");
+    }
+    else
+    {
+        object.setTexture(&texture);
+    }
+    
+    Log("Texture loded");
+
+    std::cout << "Texture size: " << texture.getSize().x << "x" << texture.getSize().y << std::endl;
+
+    //this->object.setTexture(&this->texture);
+}
+
+void Player::initsprite()
+{
+    this->sprites.setTexture(this->texture);
 }
 
 void Player::update(sf::RenderWindow* window)
