@@ -11,18 +11,30 @@
 class Player 
 {
     private:
+    //Vriables for the window
     sf::RenderWindow* window;
+    sf::Vector2u window_size;
+
+    //objects
     sf::RectangleShape object;
     sf::FloatRect bound;
-    sf::Vector2u window_size;
     sf::Vector2f pos;
     sf::Vector2f velocity = {2.0f , 0.0f};
     std::vector<sf::Vector2f> pos_object;
+    
+    //objects Features
     int recordIndex = -1;
     int replayIndex =  pos_object.size() - 1;
     sf::CircleShape recordingindicator;
 
+    //For textures and sprites 
+    sf::Sprite sprites;
+    sf::Texture texture;
+
+    //Private Functions
     void initobject();
+    void initsprite();
+    void inittextures();
 
 
     public:

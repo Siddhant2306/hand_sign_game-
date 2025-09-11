@@ -25,6 +25,7 @@ class Game
 
     void initVariable();
     void initWindow();
+    void initplayer();
     //void initobject();
 
     public:
