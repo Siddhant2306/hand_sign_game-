@@ -1,4 +1,4 @@
-# WaveSimulator (SFML)
+# Hand-sign-game(SFML)
 
 A C++/SFML sandbox project (built with CMake) that renders a window and moves a player object around while experimenting with **record / replay** of movement.
 
