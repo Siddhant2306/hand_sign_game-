@@ -1,15 +1,4 @@
-# Compiled object files, binaries, and build directories
-*.obj
-*.o
-*.exe
-*.out
-*.a
-*.lib
-*.dll
-*.so
-*.dylib
-
-# Visual Studio
+`# Visual Studio
 .vs/
 *.vcxproj*
 *.sln
@@ -27,47 +16,11 @@
 *.cache
 *.db
 
-# CMake
-CMakeCache.txt
-CMakeFiles/
-cmake_install.cmake
-Makefile
-build/
-build-*/
-
-# SFML-specific
-# (SFML doesn't generate specific files itself, but binaries/dlls may be copied)
-# You may want to keep these if they are needed to run, or ignore if they're generated/copied
-*_sfml.dll
-sfml-*.dll
-sfml-*.lib
-
-# Editor-specific
-*.swp
-*~
-*.DS_Store
-Thumbs.db
-
-# Logs and crash dumps
-*.log
-*.dmp
-*.stackdump
-
 # Ignore build and output folders
-bin/
 build/
-libs/
-
-# Ignore VS Code settings
-.vscode/
-
-# Ignore include directory (if it's generated, not source)
-include/
 
 # VS Code
 .vscode/
 
 # macOS
 .DS_Store
-
-
